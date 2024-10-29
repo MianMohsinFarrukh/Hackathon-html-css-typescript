@@ -17,3 +17,13 @@ Is the repository well-organized with proper folder structures and file naming c
 Successful Deployment on Vercel (50 points):
 
 Is the resume successfully deployed and accessible online via Vercel?
+
+
+
+
+
+Milestone-2 :
+## Deploy on Vercel 
+
+checkout our website :
+[https://hackathon-html-css-typescript.vercel.app/](https://hackathon-html-css-typescript.vercel.app/) .
