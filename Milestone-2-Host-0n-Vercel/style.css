@@ -1,0 +1,70 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f1ecec;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .resume-container {
+    max-width: 600px;
+    width: 100%;
+    background-color: #eee4e4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 2%;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+  
+  section {
+    margin-top: 20px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .resume-container {
+      padding: 15px;
+    }
+    header h1 {
+      font-size: 24px;
+    }
+  }
+  

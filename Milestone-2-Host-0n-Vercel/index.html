@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Resume</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="OIP.jpg" type="image/x-icon">
+</head>
+
+<body>
+
+  <!-- Header -->
+
+  <div class="resume-container">
+    <header style="margin-bottom: 4%;">
+      <img style="margin-bottom: 4%;" src="me.jpeg" alt="Profile Picture" class="profile-picture">
+      <h1 style="padding-bottom: 2%;">MIAN MOHSIN FARRUKH</h1>
+      <p style="padding-bottom: 2%;">Contact Us : 1mohsinfarrukh@gmail.com | +92-35-0235582</p>
+    </header>
+
+    <!-- Eduction Section -->
+
+    <section style="padding-left: 2%; padding-bottom: 2%" id="education">
+      <h2 style="padding-bottom: 1%;">EDUCATION</h2>
+      <hr style="margin-bottom: 4%;">
+      <ul>
+        <li>Merit Excel Foundation School.</li>
+        <li>Govt National College.</li>
+        <li>University Of Karachi.</li>
+      </ul>
+    </section>
+
+    <!-- Work Experience Section -->
+
+    <section style="padding-left: 2%; padding-bottom: 1%;" id="work-experience">
+      <h2 style="padding-bottom: 1%;">Work Experience</h2>
+      <hr style="margin-bottom: 4%;">
+      <ul style="margin-bottom: 2%;">
+        <li>Software Developer</li>
+      </ul>
+      <p>As a Software Developer at "Y & S Solutions" , I developed and maintained web applications, focusing on
+        performance and user experience. I collaborated with team members to implement new features and improve code
+        quality, ensuring responsive design across devices.</p>
+    </section>
+
+    <!-- Skill Section -->
+
+    <section style="padding-left: 2%; margin-bottom: 4%;" id="skills">
+      <button style="margin-bottom: 4%;" onclick="toggleSection('skills-list')">Show/More Skills</button>
+      <div id="skills-list" style="display: none;">
+        <h2 style="padding-bottom: 3%;">Skills</h2>
+        <hr style="margin-bottom: 4%;">
+        <ul>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>HTML & CSS</li>
+          <li>React</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>
