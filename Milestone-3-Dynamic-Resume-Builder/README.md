@@ -28,3 +28,11 @@ Is the resume updated in real-time without refreshing the page?
 
 User Experience and Functionality (20 points):
 Is the form-to-resume generation smooth and functional?
+
+
+
+Milestone-3 :
+## Deploy on Vercel 
+
+checkout our website :
+[https://hackathon-html-css-typescript-3pnt.vercel.app/](https://hackathon-html-css-typescript-3pnt.vercel.app/) .
