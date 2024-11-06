@@ -58,7 +58,8 @@ button:hover {
     outline: none;
 }
 
-/* Responsive Design */
+/* responsive design */
+
 @media (max-width: 600px) {
     form {
         padding: 15px;

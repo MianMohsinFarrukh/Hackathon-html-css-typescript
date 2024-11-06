@@ -1,12 +1,12 @@
 {
-  "name": "milestone-5-unique-path",
+  "name": "milestone-4-editable-resume",
   "version": "1.0.0",
+  "description": "Milestone - 4  Editable-Resume",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
