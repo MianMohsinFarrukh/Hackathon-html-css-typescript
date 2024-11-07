@@ -25,4 +25,4 @@ Milestone-4 :
 ## Deploy on Vercel 
 
 checkout our website :
-[https://hackathon-html-css-typescript-3pnt.vercel.app/](https://hackathon-html-css-typescript-3pnt.vercel.app/) .
+[https://h-1-milestone-4.vercel.app/](https://h-1-milestone-4.vercel.app/) .
