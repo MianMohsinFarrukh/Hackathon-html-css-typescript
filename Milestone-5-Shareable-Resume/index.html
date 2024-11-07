@@ -1,59 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Shareable Resume Builder</title>
-  <link rel="shortcut icon" href="OIP.jpg" type="image/x-icon">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
 </head>
-
 <body>
+    <div class="form-container">
+        <div class="form-header">
+           <h2> Resume Form</h2>
+        </div>
 
-  <h1>Shareable Resume Builder</h1>
+        <form id="resumeForm">
+            <label for="username">
+                <i class="fas fa-user"></i> Username:
+            </label>
+            <input type="text" id="username" name="username" required>
 
-  <form id="resumeForm">
-    <!-- Personal Information Section -->
-    <h2>Personal Information</h2>
-    <label for="name">Name:</label>
-    <input style="width: 96%; border-color: #4a90e2; background: rgb(206, 224, 237);" type="text" id="name"
-      placeholder="Enter Your Name" required><br><br>
+            <label for="name">
+                <i class="fas fa-id-card"></i> Full Name:
+            </label>
+            <input type="text" id="name" name="name" required>
 
-    <label for="email">Email:</label>
-    <input style="width: 96%; border-color: #4a90e2; background: rgb(206, 224, 237);" type="email" id="email"
-      placeholder="Your Email" required><br><br>
+            <label for="email">
+                <i class="fas fa-envelope"></i> Email:
+            </label>
+            <input type="email" id="email" name="email" required>
 
-    <label for="contact">Contact:</label>
-    <input style="width: 96%; border-color: #4a90e2; background: rgb(206, 224, 237);" type="text" id="contact"
-      placeholder="Contact Number" required><br><br>
+            <label for="contact">
+                <i class="fas fa-phone"></i> Contact Number:
+            </label>
+            <input type="text" id="contact" name="contact" required>
 
-    <!-- Education Section -->
-    <h2>Education</h2>
-    <textarea style="width: 96%; height: 125px; border-color: #4a90e2; background: rgb(206, 224, 237);" id="education"
-      placeholder="Enter your education details" required></textarea><br><br>
+            <label for="education">
+                <i class="fas fa-graduation-cap"></i> Education:
+            </label>
+            <textarea id="education" name="education" rows="4" required></textarea>
 
-    <!-- Work Experience Section -->
-    <h2>Work Experience</h2>
-    <textarea style="width: 96%; height: 125px; border-color: #4a90e2; background: rgb(206, 224, 237);" id="experience"
-      placeholder="Enter your work experience" required></textarea><br><br>
+            <label for="experience">
+                <i class="fas fa-briefcase"></i> Experience:
+            </label>
+            <textarea id="experience" name="experience" rows="4" required></textarea>
 
-    <!-- Skills Section -->
-    <h2>Skills</h2>
-    <textarea style="width: 96%; height: 125px; border-color: #4a90e2; background: rgb(206, 224, 237);" id="skills"
-      placeholder="Enter your skills" required></textarea><br><br>
+            <label for="skills">
+                <i class="fas fa-cogs"></i> Skills:
+            </label>
+            <textarea id="skills" name="skills" rows="4" required></textarea>
 
-    <button type="button" onclick="generateResume()">Generate Resume</button>
-  </form>
+            <button type="button" onclick="generateResume()">Generate Resume</button>
+        </form>
 
-  <!-- Resume Output Container -->
-  <div id="resumeOutput"></div>
+        <div class="output" id="output"></div>
 
-  <!-- Download Button -->
-  <button id="downloadButton" style="display: none;">Download as PDF</button>
+        <div class="resume-btn" id="resumeBtn" style="display:none;">
+            <button id="downloadBtn">Download Resume as PDF</button>
+        </div>
 
-  <script src="main.js"></script>
+        <div class="share-link" id="shareLink" style="display:none;">
+            <p>Share your resume using the link below:</p><br>
+            <input type="text" id="resumeURL" readonly>
+            <i class="fas fa-copy copy-icon" id="copyLink" onclick="copyToClipboard()"></i>
+        </div>
+
+        <div id="errorMessages" class="error"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <script src="main.js"></script> <!-- External JavaScript -->
 </body>
-
 </html>

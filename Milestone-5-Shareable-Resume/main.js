@@ -1,101 +1,80 @@
 "use strict";
-// Function to validate and generate the resume dynamically
+// Main function to generate the resume
 function generateResume() {
-    // Fetch form values
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const contact = document.getElementById("contact").value.trim();
-    const education = document.getElementById("education").value.trim();
-    const experience = document.getElementById("experience").value.trim();
-    const skills = document.getElementById("skills").value.trim();
-
-    // Validate Name (should be at most 3 words)
-    const nameWords = name.split(" ");
-    if (nameWords.length > 3) {
-        alert("Name should be at most 3 words.");
+    const username = document.getElementById('username').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const contact = document.getElementById('contact').value;
+    const education = document.getElementById('education').value;
+    const experience = document.getElementById('experience').value;
+    const skills = document.getElementById('skills').value;
+    document.getElementById('errorMessages').innerHTML = "";
+    const resumeData = { username, name, email, contact, education, experience, skills };
+    if (!validateForm(resumeData)) {
         return;
     }
-
-    // Ensure all other fields are filled
-    if (!name || !email || !contact || !education || !experience || !skills) {
-        alert("Please fill in all fields.");
-        return;
-    }
-
-    // Validate Email (should contain "@gmail.com")
-    if (!email.endsWith("@gmail.com")) {
-        alert("Email must be a Gmail address (e.g., yourname@gmail.com).");
-        return;
-    }
-
-    // Validate Contact (should be numeric)
-    if (isNaN(Number(contact)) || contact.length === 0) {
-        alert("Contact must contain numbers only.");
-        return;
-    }
-
-    // Generate resume HTML content
-    const resumeContent = `
-      <h2 style="color: #4a90e2;">Editable Resume</h2>
-      <h3 style="color: #4a90e2; text-decoration: underline;">Personal Information</h3>
-      <p><strong>Name:</strong> <span contenteditable="true">${name}</span></p>
-      <p><strong>Email:</strong> <span contenteditable="true">${email}</span></p>
-      <p><strong>Contact:</strong> <span contenteditable="true">${contact}</span></p>
-
-      <h3 style="color: #4a90e2; text-decoration: underline;">Education</h3>
-      <p contenteditable="true">${education}</p>
-
-      <h3 style="color: #4a90e2; text-decoration: underline;">Work Experience</h3>
-      <p contenteditable="true">${experience}</p>
-
-      <h3 style="color: #4a90e2; text-decoration: underline;">Skills</h3>
-      <p contenteditable="true">${skills.split(',').map(skill => skill.trim()).join(', ')}</p>
+    let output = `
+        <h3>Generated Resume:</h3>
+        <p><strong>Username:</strong> ${username}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Contact:</strong> ${contact}</p>
+        <p><strong>Education:</strong> ${education}</p>
+        <p><strong>Experience:</strong> ${experience}</p>
+        <p><strong>Skills:</strong> ${skills}</p>
     `;
-
-    // Display the resume content
-    const resumeOutput = document.getElementById("resumeOutput");
-    if (resumeOutput) {
-        resumeOutput.innerHTML = resumeContent;
-    }
-
-    // Show the download button after generating the resume
-    const downloadButton = document.getElementById("downloadButton");
-    if (downloadButton) {
-        downloadButton.style.display = "block";
-    }
+    document.getElementById('output').innerHTML = output;
+    document.getElementById('resumeBtn').style.display = 'block';
+    generateUniqueURL(resumeData);
 }
-
-// Function to download the resume as PDF
-function downloadResume() {
-    const resumeOutput = document.getElementById("resumeOutput");
-    if (resumeOutput) {
-        const pdfOptions = {
-            margin: 1,
-            filename: 'resume.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-        };
-
-        // Generate PDF
-        html2pdf()
-            .from(resumeOutput)
-            .set(pdfOptions)
-            .save();
+// Function to validate the form
+function validateForm(data) {
+    let valid = true;
+    let errorMessages = "";
+    const nameWords = data.name.trim().split(' ');
+    if (nameWords.length < 3) {
+        errorMessages += "Full Name must have at least 3 words.<br>";
+        valid = false;
     }
+    if (!data.email.endsWith('@gmail.com')) {
+        errorMessages += "Email must be a Gmail address.<br>";
+        valid = false;
+    }
+    const contactRegex = /^[0-9]+$/;
+    if (!data.contact.match(contactRegex)) {
+        errorMessages += "Contact Number should only contain numbers.<br>";
+        valid = false;
+    }
+    if (!data.education.trim()) {
+        errorMessages += "Education is required.<br>";
+        valid = false;
+    }
+    if (!data.experience.trim()) {
+        errorMessages += "Experience is required.<br>";
+        valid = false;
+    }
+    if (!data.skills.trim()) {
+        errorMessages += "Skills are required.<br>";
+        valid = false;
+    }
+    document.getElementById('errorMessages').innerHTML = errorMessages;
+    return valid;
 }
-
-// Page load par event listener ko initialize karna
-document.addEventListener("DOMContentLoaded", () => {
-    // Initially empty the resume output
-    const resumeOutput = document.getElementById("resumeOutput");
-    if (resumeOutput) {
-        resumeOutput.innerHTML = "";
-    }
-
-    // Add event listener for download button
-    const downloadButton = document.getElementById("downloadButton");
-    if (downloadButton) {
-        downloadButton.addEventListener("click", resumeContent);
-    }
+// Function to generate unique URL
+function generateUniqueURL(data) {
+    const uniqueURL = `https://example.com/resume/${data.username}?name=${encodeURIComponent(data.name)}&email=${encodeURIComponent(data.email)}&contact=${encodeURIComponent(data.contact)}&education=${encodeURIComponent(data.education)}&experience=${encodeURIComponent(data.experience)}&skills=${encodeURIComponent(data.skills)}`;
+    document.getElementById('resumeURL').value = uniqueURL;
+    document.getElementById('shareLink').style.display = 'block';
+}
+// Function to copy the generated URL to clipboard
+function copyToClipboard() {
+    const resumeURL = document.getElementById('resumeURL');
+    resumeURL.select();
+    document.execCommand('copy');
+    alert("Link copied to clipboard!");
+}
+// Event listener for downloading resume as PDF
+document.getElementById('downloadBtn').addEventListener('click', () => {
+    const element = document.getElementById('output');
+    html2pdf(element);
 });
