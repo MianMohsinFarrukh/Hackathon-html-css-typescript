@@ -24,4 +24,4 @@ Milestone-5 :
 ## Deploy on Vercel 
 
 checkout our website :
-[https://h-1-milestone-5.vercel.app/](https://h-1-milestone-5.vercel.app/) .
+[https://delicate-mochi-5cb379.netlify.app/](https://delicate-mochi-5cb379.netlify.app/) .
